@@ -7,11 +7,18 @@
   "author": "Render Developers",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",    
+    "express-handlebars": "^7.0.2",
+    "express-session": "^1.17.3",
+    "md5": "^2.3.0",
+    "mysql2": "^3.2.0",    
+    "sequelize": "^6.29.3"
   },
   "engines": {
     "node": ">=14"
