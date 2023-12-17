@@ -13,7 +13,7 @@ const html = `
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello from Render!</title>
+    <title>Clube VemJogar</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
       setTimeout(() => {
@@ -54,7 +54,9 @@ const html = `
   </head>
   <body>
     <section>
-      Olá Clube VemJogar
+      Olá, seja bem vindo ao Clube VemJogar!
+      <br />
+      Em breve, teremos novidades.
     </section>
   </body>
 </html>
