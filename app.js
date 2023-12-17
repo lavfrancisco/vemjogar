@@ -55,8 +55,6 @@ const html = `
   <body>
     <section>
       Olá, seja bem vindo ao Clube VemJogar!
-      <br />
-      Em breve, teremos novidades.
     </section>
   </body>
 </html>
