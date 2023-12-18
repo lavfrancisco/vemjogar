@@ -1,18 +1,35 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
-import userRouter from './routes/userRoutes.js';
+//import userRouter from './routes/userRoutes.js';
 import indexRouter from './routes/indexRoutes.js';
 import session from 'express-session';
-
-
-
-
 
 const app = express();
 const port = process.env.PORT || 3001;
 
+//Configuração BodyParser
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.json());
+
+// Use the session middleware
+app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true}));
+
+// Configuração de pasta public para arquivos estáticos
+app.use(express.static('public'));
+
+//Rotas
+//app.use('/', indexRouter);
 app.get("/", (req, res) => res.type('html').send(html));
+
+//app.use('/usuario', userRouter);
+
+app.use(function(req, res, next) {
+    res.status(404).render("error/error404");
+});
+
+
+
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
