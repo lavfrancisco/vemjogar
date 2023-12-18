@@ -19,8 +19,8 @@ app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true})
 app.use(express.static('public'));
 
 //Rotas
-//app.use('/', indexRouter);
-app.get("/", (req, res) => res.type('html').send(html));
+app.use('/', indexRouter);
+//app.get("/", (req, res) => res.type('html').send(html));
 
 //app.use('/usuario', userRouter);
 
