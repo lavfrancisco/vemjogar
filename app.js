@@ -1,6 +1,19 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+const engine = require("express-handlebars");
+const bodyParser = require("body-parser");
+
+import userRouter from './routes/userRoutes.js';
+import indexRouter from './routes/indexRoutes.js';
+import session from 'express-session';
+
+
+//Configuração Handlebars
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
+
 
 app.get("/", (req, res) => res.type('html').send(html));
 
@@ -8,6 +21,41 @@ const server = app.listen(port, () => console.log(`Example app listening on port
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
+
+
+
+
+
+
+
+
+
+//Configuração BodyParser
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.json());
+
+// Use the session middleware
+app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true}));
+
+// Configuração de pasta public para arquivos estáticos
+app.use(express.static('public'));
+
+//Rotas
+app.use('/', indexRouter);
+
+app.use('/usuario', userRouter);
+
+app.use(function(req, res, next) {
+    res.status(404).render("error/error404");
+});
+
+
+
+
+app.listen(3000, () => 
+{ 
+	console.log('Aplicação rodando em http://localhost:3000/'); 
+});
 
 const html = `
 <!DOCTYPE html>
