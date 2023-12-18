@@ -1,12 +1,16 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
-//import userRouter from './routes/userRoutes.js';
+import userRouter from './routes/userRoutes.js';
 import indexRouter from './routes/indexRoutes.js';
 import session from 'express-session';
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 //Configuração BodyParser
 app.use(bodyParser.urlencoded({ extended: true })); 
