@@ -114,19 +114,22 @@ userRouter.post('/editar', (req, res) => {
 userRouter.post('/logar', async (req, res) => {
 
   const email = req.body.email;
-  const senha = md5(req.body.senha);
+  //const senha = md5(req.body.senha);
+  const senha = req.body.senha;
   
 
-  const usuario = await User.findOne({ where: { email: email, senha: senha } });    
-  if(usuario!=null)
+  const usuario = await User.findOne({ where: { email: email} });    
+  if(usuario!=null && (await argon2.verify(usuario.senha, senha)))
   {
     //res.render('usuario/editar', {id: usuario.id, nome: usuario.nome, sobrenome:usuario.sobrenome, email: usuario.email});
-    req.session.usuarioLogado = usuario;        
-    res.redirect("/usuario/listar");
+    req.session.usuarioLogado = usuario;  
+    res.redirect("../cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});    
+    //res.redirect("/usuario/listar");
   }
   else{
     req.session.usuarioLogado = null;    
-    res.render('index/login', {erroLogin: "Usuario ou senha inválidos", css: "../css/style.css"});        
+    //res.render('index/login', {erroLogin: "Usuario ou senha inválidos", css: "../css/style.css"});        
+    res.redirect("../cadastro", {erroCadastro: "Usuário ou senha inválidos", css: "/css"}); 
   }  
 });
 
