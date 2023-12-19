@@ -39,7 +39,7 @@ userRouter.get('/exibir/:id', async (req, res) => {
   
 });
 
-userRouter.get('/excluir/:id', async (req, res) => {
+userRouter.get('/excluirUsuario/:id', async (req, res) => {
 
   if(req.session.usuarioLogado || req.session.usuarioLogado!=null)
   {
@@ -58,7 +58,7 @@ userRouter.get('/excluir/:id', async (req, res) => {
   
 });
 
-userRouter.get('/listar', async (req, res) => {
+userRouter.get('/listarUsuarios', async (req, res) => {
 
   if(req.session.usuarioLogado || req.session.usuarioLogado!=null)
   {  
@@ -77,7 +77,7 @@ userRouter.get('/listar', async (req, res) => {
 });
 
 
-userRouter.post('/cadastrar', async (req, res) => {
+userRouter.post('/cadastrarUsuario', async (req, res) => {
     const senhaHash = await argon2.hash(req.body.senha); 
     const user = User.create({ 
         nome: req.body.nome,         
@@ -93,7 +93,7 @@ userRouter.post('/cadastrar', async (req, res) => {
     
 });
 
-userRouter.post('/editar', (req, res) => {
+userRouter.post('/editarUsuario', (req, res) => {
 
   
   const user = User.update({ 

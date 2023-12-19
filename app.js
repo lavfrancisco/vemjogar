@@ -28,7 +28,7 @@ app.use(express.static(path.join('','public')));
 app.use('/', siteRouter);
 //app.get("/", (req, res) => res.type('html').send(html));
 
-app.use('/usuario', userRouter);
+app.use('/', userRouter);
 
 app.use(function(req, res, next) {
     res.status(404).render("error/error404");
