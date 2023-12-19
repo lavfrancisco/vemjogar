@@ -17,6 +17,7 @@
     "express-session": "^1.17.3",
     "md5": "^2.3.0",
     "mysql2": "^3.2.0",    
+    "argon2": "^0.31.2",
     "sequelize": "^6.29.3"
   },
   "engines": {

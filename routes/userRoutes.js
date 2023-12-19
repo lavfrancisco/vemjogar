@@ -1,6 +1,7 @@
 import express from 'express';
 import User from "../models/Usuario.js";
 import md5 from 'md5';
+import argon2 from 'argon2';
 
 const userRouter = express.Router()
 
@@ -75,17 +76,18 @@ userRouter.get('/listar', async (req, res) => {
 });
 
 
-userRouter.post('/cadastrar', (req, res) => {
-
+userRouter.post('/cadastrar', async (req, res) => {
+    const senhahast = await argon2.hash(req.body.senha); 
     const user = User.create({ 
         nome: req.body.nome,         
         email: req.body.email,
-        senha: md5(req.body.senha)
+        //senha: md5(req.body.senha)
+        senha: senha 
       }).then(function(){
-        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "/css", sucessoCadastro: "Usuário cadastrado com sucesso"});
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "../css", sucessoCadastro: "Usuário cadastrado com sucesso"});
         //res.redirect("/cadastro", {sucessoCadastro: "Usuário cadastrado com sucesso", css: "/css"});
       }).catch(function(erro){
-        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "/css", erroCadastro: "Usuário cadastrado com sucesso"});
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "../css", erroCadastro: "Usuário cadastrado com sucesso"});
         //res.redirect("/cadastro", {erroCadastro: "Usuário cadastrado com sucesso", css: "/css"});
       });
     
@@ -113,6 +115,7 @@ userRouter.post('/logar', async (req, res) => {
 
   const email = req.body.email;
   const senha = md5(req.body.senha);
+  
 
   const usuario = await User.findOne({ where: { email: email, senha: senha } });    
   if(usuario!=null)

@@ -14,26 +14,31 @@
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-xs-4">
-                                <label for="senha">Senha:</label>
-                                <input type="password" class="form-control" id="senha" name="senha" required>
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-4">
+                            <label for="senha">Senha:</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-2 p-10">
-                                <input type="submit" class="btn btn-primary" value="Enviar">
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2 p-10">
+                            <input type="submit" class="btn btn-primary" value="Enviar">
                         </div>
+                    </div>
                 </form>
                 {{#if erroCadastro}}
-                <div class="alert alert-danger">
-                    <strong>Erro: </strong> {{erroLogin}}.
+                <div class="form-group row">
+                    <div class="alert alert-danger">
+                        <strong>Erro: </strong> {{erroLogin}}.
+                    </div>
                 </div>
                 {{/if}}
                 {{#if sucessoCadastro}}
-                <div class="alert alert-sucess">
-                    {{sucessoCadastro}}.
+                <div class="form-group row">
+                    <div class="alert alert-sucess">
+                        {{sucessoCadastro}}.
+                    </div>
                 </div>
                 {{/if}}
             </div>
