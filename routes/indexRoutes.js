@@ -13,7 +13,7 @@ indexRouter.get('/home', (req, res) => {
 });
 
 indexRouter.get('/login', (req, res) => {
-  res.render('index/login',{title:'Login do Sistema', css: "css/style.css"});
+  res.render('index/login',{layout: 'site', title:'Login do Sistema', css: "css/style.css"});
 });
 
 
