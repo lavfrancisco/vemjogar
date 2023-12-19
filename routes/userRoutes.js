@@ -77,12 +77,12 @@ userRouter.get('/listar', async (req, res) => {
 
 
 userRouter.post('/cadastrar', async (req, res) => {
-    const senhahast = await argon2.hash(req.body.senha); 
+    const senhaHash = await argon2.hash(req.body.senha); 
     const user = User.create({ 
         nome: req.body.nome,         
         email: req.body.email,
         //senha: md5(req.body.senha)
-        senha: senha 
+        senha: senhaHash 
       }).then(function(){
         res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "../css", sucessoCadastro: "Usuário cadastrado com sucesso"});
         //res.redirect("/cadastro", {sucessoCadastro: "Usuário cadastrado com sucesso", css: "/css"});
