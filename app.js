@@ -2,7 +2,7 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
 import userRouter from './routes/userRoutes.js';
-import siteRouter from './routes/indexRoutes.js';
+import siteRouter from './routes/siteRoutes.js';
 import session from 'express-session';
 
 const app = express();
