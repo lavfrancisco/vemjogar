@@ -5,7 +5,7 @@ const indexRouter = express.Router()
 
 
 indexRouter.get('/', (req, res) => {
-  res.render('index/index', {title:'Clube VemJogar - Home', css: "css", layout: 'site'});
+  res.render('index/index', {layout: 'site', title:'Clube VemJogar - Home', css: "css"});
 });
 
 indexRouter.get('/home', (req, res) => {
