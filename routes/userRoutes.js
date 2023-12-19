@@ -6,6 +6,7 @@ import argon2 from 'argon2';
 const userRouter = express.Router()
 
 
+
 userRouter.get('/novo', (req, res) => {
     if(req.session.usuarioLogado || req.session.usuarioLogado!=null)
     {
@@ -81,14 +82,12 @@ userRouter.post('/cadastrar', async (req, res) => {
     const user = User.create({ 
         nome: req.body.nome,         
         email: req.body.email,
-        //senha: md5(req.body.senha)
+        
         senha: senhaHash 
       }).then(function(){
-        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "../css", sucessoCadastro: "Usuário cadastrado com sucesso"});
-        //res.redirect("/cadastro", {sucessoCadastro: "Usuário cadastrado com sucesso", css: "/css"});
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', sucessoCadastro: "Usuário cadastrado com sucesso"});        
       }).catch(function(erro){
-        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "../css", erroCadastro: "Usuário cadastrado com sucesso"});
-        //res.redirect("/cadastro", {erroCadastro: "Usuário cadastrado com sucesso", css: "/css"});
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', erroCadastro: "Usuário cadastrado com sucesso"});      
       });
     
     

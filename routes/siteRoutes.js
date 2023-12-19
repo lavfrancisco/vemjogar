@@ -5,15 +5,15 @@ const siteRouter = express.Router()
 
 
 siteRouter.get('/', (req, res) => {
-  res.render('site/index', {layout: 'site', title:'Clube VemJogar - Home', css: "/css", images: "/images"});
+  res.render('site/index', {layout: 'site', title:'Clube VemJogar - Home'});
 });
 
 siteRouter.get('/login', (req, res) => {
-  res.render('site/login',{layout: 'site', title:'Clube VemJogar - Login', css: "/css", images: "/images"});
+  res.render('site/login',{layout: 'site', title:'Clube VemJogar - Login'});
 });
 
 siteRouter.get('/cadastro', (req, res) => {
-  res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "/css", images: "/images"});
+  res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro'});
 });
 
 

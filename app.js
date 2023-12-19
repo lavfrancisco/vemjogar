@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true}));
 
 // Configuração de pasta public para arquivos estáticos
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 
 //Rotas
 app.use('/', siteRouter);
