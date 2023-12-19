@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import userRouter from './routes/userRoutes.js';
 import siteRouter from './routes/siteRoutes.js';
 import session from 'express-session';
-import path from 'path';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -21,7 +20,8 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true}));
 
 // Configuração de pasta public para arquivos estáticos
-app.use(express.static(path.join(__dirname,'public')));
+//app.use(express.static('public'));
+app.use(express.static(path.join('','public')));
 
 //Rotas
 app.use('/', siteRouter);
