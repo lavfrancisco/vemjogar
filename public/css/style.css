@@ -228,7 +228,7 @@ button {
     float: left;
 }
 .navbar {
-    padding: 20px 30px;
+    padding: 20px 10px;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 10px;
@@ -238,7 +238,6 @@ button {
 .bg-light {
     background-color: #fefeff !important;
     box-shadow: 0px 0px 10px 0px;
-    border-top: 45px solid #333a44;
 }
 .navbar-light .navbar-nav .nav-link {
     color: #24292f;
@@ -260,6 +259,12 @@ button {
     padding-bottom: 200px;
     background-size: cover;
 }
+
+.banner-logo {
+    margin: auto;
+    background-color: #fff; 
+}
+
 .image_1 {
     width: 100%;
     float: left;
