@@ -123,13 +123,13 @@ userRouter.post('/logar', async (req, res) => {
   {
     //res.render('usuario/editar', {id: usuario.id, nome: usuario.nome, sobrenome:usuario.sobrenome, email: usuario.email});
     req.session.usuarioLogado = usuario;  
-    res.redirect("../cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});    
-    //res.redirect("/usuario/listar");
+    //res.redirect("../cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});    
+    res.render("index/cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});
   }
   else{
     req.session.usuarioLogado = null;    
     //res.render('index/login', {erroLogin: "Usuario ou senha inválidos", css: "../css/style.css"});        
-    res.redirect("../cadastro", {erroCadastro: "Usuário ou senha inválidos", css: "/css"}); 
+    res.render("index/cadastro", {erroCadastro: "Usuário ou senha inválidos", css: "/css"}); 
   }  
 });
 
