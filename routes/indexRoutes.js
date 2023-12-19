@@ -5,15 +5,15 @@ const indexRouter = express.Router()
 
 
 indexRouter.get('/', (req, res) => {
-  res.render('index/index', {layout: 'site', title:'Clube VemJogar - Home', css: "css"});
+  res.render('index/index', {layout: 'site', title:'Clube VemJogar - Home', css: "/css"});
 });
 
 indexRouter.get('/home', (req, res) => {
-  res.render('index/home', {title:'Clube VemJogar - Home', css: "css/style.css"});
+  res.render('index/home', {title:'Clube VemJogar - Home', css: "/css"});
 });
 
 indexRouter.get('/login', (req, res) => {
-  res.render('index/login',{layout: 'site', title:'Login do Sistema', css: "css/style.css"});
+  res.render('index/login',{layout: 'site', title:'Clube VemJogar - Login', css: "/css"});
 });
 
 
