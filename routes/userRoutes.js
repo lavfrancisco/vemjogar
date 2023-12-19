@@ -78,14 +78,15 @@ userRouter.get('/listar', async (req, res) => {
 userRouter.post('/cadastrar', (req, res) => {
 
     const user = User.create({ 
-        nome: req.body.nome, 
-        sobrenome: req.body.sobrenome, 
+        nome: req.body.nome,         
         email: req.body.email,
         senha: md5(req.body.senha)
       }).then(function(){
-        res.redirect("/usuario/listar");
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "/css", sucessoCadastro: "Usuário cadastrado com sucesso"});
+        //res.redirect("/cadastro", {sucessoCadastro: "Usuário cadastrado com sucesso", css: "/css"});
       }).catch(function(erro){
-        res.send('Erro ao inserir o usuário: '+erro);
+        res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro', css: "/css", erroCadastro: "Usuário cadastrado com sucesso"});
+        //res.redirect("/cadastro", {erroCadastro: "Usuário cadastrado com sucesso", css: "/css"});
       });
     
     

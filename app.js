@@ -2,7 +2,7 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
 import userRouter from './routes/userRoutes.js';
-import indexRouter from './routes/indexRoutes.js';
+import siteRouter from './routes/indexRoutes.js';
 import session from 'express-session';
 
 const app = express();
@@ -23,10 +23,10 @@ app.use(session({ secret: 'DSW secret', resave: false, saveUninitialized: true})
 app.use(express.static('public'));
 
 //Rotas
-app.use('/', indexRouter);
+app.use('/', siteRouter);
 //app.get("/", (req, res) => res.type('html').send(html));
 
-//app.use('/usuario', userRouter);
+app.use('/usuario', userRouter);
 
 app.use(function(req, res, next) {
     res.status(404).render("error/error404");

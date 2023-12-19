@@ -1,0 +1,42 @@
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div>
+            <div class="card-body">
+                <form action="/usuario/cadastrar" method="POST">
+                    <div class="form-group row">
+                        <div class="col-xs-2">
+                            <label for="nome">Nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-4">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control" id="senha" name="senha" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2 p-10">
+                                <input type="submit" class="btn btn-primary" value="Enviar">
+                            </div>
+                        </div>
+                </form>
+                {{#if erroCadastro}}
+                <div class="alert alert-danger">
+                    <strong>Erro: </strong> {{erroLogin}}.
+                </div>
+                {{/if}}
+                {{#if sucessoCadastro}}
+                <div class="alert alert-sucess">
+                    {{sucessoCadastro}}.
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
