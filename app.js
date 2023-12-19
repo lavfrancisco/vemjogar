@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import userRouter from './routes/userRoutes.js';
 import siteRouter from './routes/siteRoutes.js';
 import session from 'express-session';
+import path from 'path';
 
 const app = express();
 const port = process.env.PORT || 3001;
