@@ -124,12 +124,12 @@ userRouter.post('/logar', async (req, res) => {
     //res.render('usuario/editar', {id: usuario.id, nome: usuario.nome, sobrenome:usuario.sobrenome, email: usuario.email});
     req.session.usuarioLogado = usuario;  
     //res.redirect("../cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});    
-    res.render("site/cadastro", {sucessoCadastro: "Logado ao sistema", css: "/css"});
+    res.render("site/cadastro", {sucessoCadastro: "Logado ao sistema", css: "../css", images: "../images", title:'Clube VemJogar - Cadastro'});
   }
   else{
     req.session.usuarioLogado = null;    
     //res.render('index/login', {erroLogin: "Usuario ou senha inválidos", css: "../css/style.css"});        
-    res.render("site/cadastro", {erroCadastro: "Usuário ou senha inválidos", css: "/css"}); 
+    res.render("site/cadastro", {erroCadastro: "Usuário ou senha inválidos", css: "../css", images: "../images", title:'Clube VemJogar - Cadastro'}); 
   }  
 });
 
