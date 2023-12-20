@@ -16,6 +16,10 @@ siteRouter.get('/cadastro', (req, res) => {
   res.render('site/cadastro',{layout: 'site', title:'Clube VemJogar - Cadastro'});
 });
 
+siteRouter.get('/videos', (req, res) => {
+  res.render('site/videos',{layout: 'site', title:'Clube VemJogar - Vídeos'});
+});
+
 
 export default siteRouter
 

@@ -1,0 +1,74 @@
+<style>
+        body, html{
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .video-item{
+            display: block;
+            float: left;            
+            width: 50%;
+        }
+        .video-item a{
+            text-decoration: none;
+            color: black;
+        }
+        .video-item a:hover{
+            text-decoration: underline;
+            opacity: 0.7;
+        }
+        .video-item img, .video-item p, .video-item h2{
+            width: 100%;
+            height: auto;
+        }
+        .video-item .content{
+            padding: 5px;
+        }
+        h1{
+            text-align: center;
+        }
+        h2{
+            font-size: 20px;
+        }
+    </style>    
+
+
+
+    <div id="content">
+        <h1>Lista de vídeos de um canal do YouTube</h1>
+        <div id="container"></div>
+    </div>    
+    <script type="text/javascript">
+        //cria uma lista com os vídeos do canal especificado
+        function funcaoCallback(json){
+            var videos = json.items; //array com os vídeos
+            var youtubeUrl = 'https://www.youtube.com/watch?v='; //padrão de URL do YouTube
+            var output_html = "";
+            for(i = 0; i < videos.length; i++){
+                output_html += "<div class=\"video-item\">";
+                output_html += "<div class=\"content\">";
+                output_html += "<iframe class=\"card-img-top\"  src='https://www.youtube.com/embed/"+videos[i].id.videoId+"' frameborder='0' allowfullscreen></iframe>";                                            
+                output_html += "<h2>";                
+                output_html += videos[i].snippet.title.substr(0, 70);
+                output_html += "</h2>";
+                output_html += "<p>";
+                output_html += videos[i].snippet.description.substr(0, 90);
+                output_html += "</p>";
+                output_html += "</a>";
+                output_html += "</div>";
+                output_html += "</div>";
+            }
+            document.getElementById("container").innerHTML = output_html;
+        }        
+    </script>
+    <script async src="https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=UC_cosXNBZUlZZB7xFQeNwDA&key=AIzaSyCMjjj9OAPsmzII-t6dYRqCWsUMBIgQM1g&maxResults=10&type=video&order=date&fields=items(id(videoId)%2Csnippet(title%2Cdescription%2Cthumbnails(medium)))&prettyPrint=false&callback=funcaoCallback"></script>
+    
+
+    
+    
+</body>
+    
+    
